@@ -1,0 +1,22 @@
+div{
+    border: 1px solid gray;
+    margin: 5px;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+
+    margin-top: 50px;
+
+   /*  margin-top: 5px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+ */
+    /* vamos a trabajar lo mismo de arriba pero en formato de reloj*/
+    margin: 5px 10px 15px 20px;
+
+    margin: 10px 20px /* aribaabajo   derechaizquierda*/ 
+    /*margin-bottom,margin-top,margin-left,margin-right*/
+
+
+}
