@@ -1,0 +1,28 @@
+//colores personalizados
+$primary:       #492f54;
+$secondary:     #c34c7c;
+$success:       #30a56e;
+$info:          #eda2bc;
+$warning:       #ddce30;
+$danger:        #e8351a;
+$light:         #e4e3d5;
+$dark:          #040300;
+
+//agregar un color
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$custom-color-theme:(
+    "attention": #FF0000,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-color-theme );
+
+//cambiar fuente
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Oswald&display=swap');
+$font-family-base: 'Delicious Handrawn', cursive;
+$font-family-base: 'Oswald', sans-serif;
+
+
+//importar bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
