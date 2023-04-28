@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre',50);
-            $table->string('entrenador',50);
+            $table->unsignedInteger('id')->autoIncrement();
+            $table->string('nombre',30);
+            $table->string('entrenador',20);
             $table->timestamps();
         });
     }
