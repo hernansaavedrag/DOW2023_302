@@ -54,18 +54,19 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white">Agregar Equipo</div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{route('equipos.store')}}">
+                            @csrf
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" id="nombre" class="form-control">
+                                <input type="text" id="nombre" name="nombre" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="entrenador" class="form-label">Entrenador</label>
-                                <input type="text" id="entrenador" class="form-control">
+                                <input type="text" id="entrenador" name="entrenador" class="form-control">
                             </div>
                             <div class="mb-3 d-grid gap-2 d-lg-block">
-                                <button class="btn btn-warning">Cancelar</button>
-                                <button class="btn btn-success">Agregar Equipo</button>
+                                <button type ="reset" class="btn btn-warning">Cancelar</button>
+                                <button type ="submit" class="btn btn-success">Agregar Equipo</button>
                             </div>
                         </form>
                     </div>

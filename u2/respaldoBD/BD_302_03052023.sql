@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2023 a las 17:51:41
+-- Tiempo de generación: 03-05-2023 a las 16:07:25
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -48,7 +48,25 @@ INSERT INTO `equipos` (`id`, `nombre`, `entrenador`, `created_at`, `updated_at`)
 (4, 'Manchester City', 'Pep Guardiola', '2023-04-28 15:21:51', NULL),
 (5, 'Barcelona', 'Xavi Hernández', '2023-04-28 15:21:51', NULL),
 (6, 'Real Madrid', 'Carlo Ancelotti', '2023-04-28 15:21:51', NULL),
-(7, 'Everton', 'Nelson Acosta', '2023-04-28 15:21:51', NULL);
+(7, 'Everton', 'Nelson Acosta', '2023-04-28 15:21:51', NULL),
+(8, 'San Luis', 'Francisco Bosan', '2023-05-03 13:14:12', '2023-05-03 13:14:12');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `jugadores`
+--
+
+CREATE TABLE `jugadores` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `apellido` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `posicion` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `numero` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `equipo_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -68,7 +86,8 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(4, '2023_04_26_123211_create_equipos_table', 1);
+(4, '2023_04_26_123211_create_equipos_table', 1),
+(5, '2023_05_03_092652_create_jugadores_table', 2);
 
 -- --------------------------------------------------------
 
@@ -100,6 +119,13 @@ ALTER TABLE `equipos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `jugadores`
+--
+ALTER TABLE `jugadores`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jugadores_equipo_id_foreign` (`equipo_id`);
+
+--
 -- Indices de la tabla `migrations`
 --
 ALTER TABLE `migrations`
@@ -121,19 +147,35 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `jugadores`
+--
+ALTER TABLE `jugadores`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `jugadores`
+--
+ALTER TABLE `jugadores`
+  ADD CONSTRAINT `jugadores_equipo_id_foreign` FOREIGN KEY (`equipo_id`) REFERENCES `equipos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
