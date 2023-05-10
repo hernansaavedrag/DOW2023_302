@@ -56,7 +56,7 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white">Agregar Jugador</div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('equipos.store')}}">
+                        <form method="POST" action="{{route('jugadores.store')}}">
                             @csrf
                             <div class="mb-3">
                                 <label for="apellido" class="form-label">Apellido</label>
@@ -87,7 +87,18 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="numero">Número de Camiseta: </label>
+                                <input type="number" class="form-control" id="numero" name="numero" min="1" max="99">
+                            </div>
+                            <div class="form-group">
+                                <label for="equipo">Equipo:</label>
+                                <select name="equipo" id="equipo" class="form-control">
+                                    @foreach ($equipos as $equipo)
+                                        <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="mb-3 d-grid gap-2 d-lg-block">
                                 <button type ="reset" class="btn btn-warning">Cancelar</button>
                                 <button type ="submit" class="btn btn-success">Agregar Equipo</button>
