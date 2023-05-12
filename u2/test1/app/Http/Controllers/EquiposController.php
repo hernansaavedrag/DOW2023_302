@@ -22,6 +22,10 @@ class EquiposController extends Controller
 
     }
 
+    public function show(Equipo $equipo){
+        return view('equipos.show',compact('equipo'));
+    }
+
     public function destroy(Equipo $equipo){
         //dd($equipo->nombre);
         $equipo->delete();

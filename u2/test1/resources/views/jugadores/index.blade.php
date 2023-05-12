@@ -20,6 +20,7 @@
                             <th>Nombre</th>
                             <th>Posición</th>
                             <th>Número</th>
+                            <th>Equipo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -31,6 +32,10 @@
                             <td class="align-middle">{{$jugador->nombre}}</td>
                             <td class="align-middle">{{$jugador->posicion}}</td>
                             <td class="align-middle">{{$jugador->numero}}</td>
+                            <td class="align-middle">
+                                {{$jugador->equipo!=null?$jugador->equipo->nombre:'Sin Equipo'}}
+                                <!--condicion verdad ? si es verdadero : si es falso  +++> eoperacion ternaria-->
+                            </td>
 
                             <td>
                                 <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
@@ -56,7 +61,7 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white">Agregar Jugador</div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('jugadores.store')}}">
+                        <form method="POST" action="{{route('jugadores.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="apellido" class="form-label">Apellido</label>
@@ -98,6 +103,10 @@
                                         <option value="{{$equipo->id}}">{{$equipo->nombre}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen">Imagen:</label>
+                                <input type="file" id="imagen" name="imagen" class="form-control-file">
                             </div>
                             <div class="mb-3 d-grid gap-2 d-lg-block">
                                 <button type ="reset" class="btn btn-warning">Cancelar</button>

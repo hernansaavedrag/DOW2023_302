@@ -30,13 +30,18 @@
                             
                             <td class="text-center" style="width: 1rem">
                                 <!-- BORRAR -->
-                                <form method="POST" action="{{route('equipos.destroy',$equipo->id)}}">
+                                <span data-bs-toggle="tooltip" data-bs-title="Borrar {{$equipo->nombre}}">
+                                    <button type="button" class="btn btn-sm btn-danger pb-0" data-bs-toggle="modal" data-bs-target="#equipoBorrarModel{{$equipo->id}}">
+                                        <span class="material-icons">delete</span>
+                                    </button>
+                                </span>
+                                {{-- <form method="POST" action="{{route('equipos.destroy',$equipo->id)}}">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
                                     data-bs-title="Borrar {{$equipo->nombre}}">
                                     <span class="material-icons">delete</span></button>
-                                </form>
+                                </form> --}}
                                 <!--<a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip"
                                     data-bs-title="Borrar">
                                     <span class="material-icons">delete</span>
@@ -50,13 +55,35 @@
                                 </a>
                             </td>
                             <td class="text-center" style="width: 1rem">
-                                <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip"
+                                <a href="{{route('equipos.show',$equipo->id)}}" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip"
                                     data-bs-title="Ver {{$equipo->nombre}}">
                                     <span class="material-icons">group</span>
                                 </a>
                             </td>
                             
                         </tr>
+                        <!-- Modal Borrar Equipo-->
+                        <div class="modal fade" id="equipoBorrarModel{{$equipo->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Borrando Equipo..</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                ¿Desea Eliminar equipo {{$equipo->nombre}}?
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="POST" action="{{route('equipos.destroy',$equipo->id)}}">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Borrar Equipo</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         @endforeach
                         
                         
@@ -89,6 +116,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
     
