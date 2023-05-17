@@ -18,6 +18,7 @@
                             <th>N°</th>
                             <th>Nombre</th>
                             <th>Entrenador</th>
+                            <th>Plantel</th>
                             <th colspan="3">Acciones</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                             <td class="align-middle">{{$equipo->id}}</td>
                             <td class="align-middle">{{$equipo->nombre}}</td>
                             <td class="align-middle">{{$equipo->entrenador}}</td>
+                            <td class="align-middle">{{count($equipo->jugadores)}}</td>
                             
                             <td class="text-center" style="width: 1rem">
                                 <!-- BORRAR -->

@@ -42,7 +42,7 @@
                                     data-bs-title="Borrar {{$jugador->nombre}}">
                                     <span class="material-icons">delete</span>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip"
+                                <a href="{{route('jugadores.edit',$jugador->id)}}" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip"
                                     data-bs-title="Editar {{$jugador->nombre}}">
                                     <span class="material-icons">edit</span>
                                 </a>

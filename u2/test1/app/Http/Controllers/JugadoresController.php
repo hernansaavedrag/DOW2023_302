@@ -27,4 +27,8 @@ class JugadoresController extends Controller
         return redirect()->route('jugadores.index');
 
     }
+
+    public function edit(Jugador $jugador){
+        return view('jugadores.edit',compact('jugador'));
+    }
 }
