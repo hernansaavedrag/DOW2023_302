@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-header">Formulario de edición</div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('jugadores.update',$jugador->id)}}">
+                    <form method="POST" action="{{route('jugadores.update',$jugador->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="mb-3">

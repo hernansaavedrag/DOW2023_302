@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jugador;
 use App\Models\Equipo;
+use Illuminate\Support\Facades\Storage;
 
 class JugadoresController extends Controller
 {
@@ -39,6 +40,15 @@ class JugadoresController extends Controller
         $jugador->posicion = $request->posicion;
         $jugador->numero = $request->numero;
         $jugador->equipo_id = $request->equipo;
+
+        if(isset($request->imagen)){
+            //borrar la imagen actual
+            Storage::delete($jugador->imagen);
+
+            //subir la nueva imagen
+            $jugador->imagen = $request->imagen->store('public/jugadores');
+        }
+
         $jugador->save();
         return redirect()->route('jugadores.index');
 
