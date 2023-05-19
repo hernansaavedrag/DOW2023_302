@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    
     <!-- barra usuario -->
     <div class="container-fluid">
         <div class="row bg-dark text-white">
@@ -42,7 +43,7 @@
                             <a class="nav-link @if(Route::current()->getName()=='home.index') active @endif" aria-current="page" href="{{route('home.index')}}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if(Route::current()->getName()=='equipos.index') active @endif" href="{{route('equipos.index')}}">Equipos</a>
+                            <a class="nav-link @if(Request::segments()[0]=='equipos') active @endif" href="{{route('equipos.index')}}">Equipos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estadios</a>
@@ -51,7 +52,8 @@
                             <a class="nav-link" href="#">Estadísticas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if(Route::current()->getName()=='jugadores.index') active @endif" href="{{route('jugadores.index')}}">Jugadores</a>
+                            {{-- <a class="nav-link @if(Route::current()->getName()=='jugadores.index') active @endif" href="{{route('jugadores.index')}}">Jugadores</a> --}}
+                            <a class="nav-link @if(Request::segments()[0]=='jugadores') active @endif" href="{{route('jugadores.index')}}">Jugadores</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Partidos</a>
