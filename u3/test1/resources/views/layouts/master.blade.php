@@ -42,10 +42,12 @@
                         <li class="nav-item">
                             <a class="nav-link @if(Route::current()->getName()=='home.index') active @endif" aria-current="page" href="{{route('home.index')}}">Inicio</a>
                         </li>
+                        @if (Gate::allows('usuarios-listar'))
                         <li class="nav-item">
                             <a class="nav-link @if(Route::current()->getName()=='equipos.index') active @endif" href="{{route('equipos.index')}}">Equipos</a>
                             {{--<a class="nav-link @if(Request::segments()[0]=='equipos') active @endif" href="{{route('equipos.index')}}">Equipos</a>--}}
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estadios</a>
                         </li>

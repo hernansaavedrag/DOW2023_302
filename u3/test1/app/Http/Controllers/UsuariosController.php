@@ -20,7 +20,9 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        $roles = Rol::all();
+        return view('usuarios.index',compact('usuarios','roles'));
     }
 
     /**
