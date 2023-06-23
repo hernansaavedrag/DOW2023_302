@@ -16,13 +16,13 @@
     <div class="container-fluid">
         <div class="row bg-dark text-white">
             <div class="col-8">
-                Bienvenido <span class="fw-bold">User1</span>
+                Bienvenido <span class="fw-bold">{{Auth::user()->nombre}}</span>
             </div>
             <div class="col-3 text-end d-none d-lg-block">
-                Último inicio de sesión 01/04/2023 a las 18:34
+                Último inicio de sesión {{date('d-m-Y',strtotime(Auth::user()->ultimo_login))}} a las {{date('H:i:s',strtotime(Auth::user()->ultimo_login))}}
             </div>
             <div class="col-1 text-end d-none d-lg-block">
-                <a href="{{route('home.login')}}" class="text-white">Cerrar Sesión</a>
+                <a href="{{route('usuarios.logout')}}" class="text-white">Cerrar Sesión</a>
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@
                             </ul>
                         </li>
                         <li class="nav-item d-lg-none">
-                            <a class="nav-link" href="{{route('home.login')}}">Cerrar Sesión</a>
+                            <a class="nav-link" href="{{route('usuarios.logout')}}">Cerrar Sesión</a>
                         </li>
 
                     </ul>

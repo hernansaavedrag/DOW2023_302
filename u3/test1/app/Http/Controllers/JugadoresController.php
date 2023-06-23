@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class JugadoresController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');//->except('login');
+    }
+
     public function index(){
         $jugadores = Jugador::all();
         $equipos = Equipo::all();

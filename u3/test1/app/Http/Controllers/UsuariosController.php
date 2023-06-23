@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuariosController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth')->except('login');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -99,5 +104,10 @@ class UsuariosController extends Controller
         }
 
 
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('home.login');
     }
 }
